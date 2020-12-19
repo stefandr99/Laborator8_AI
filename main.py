@@ -28,13 +28,15 @@ def sentences_to_one_hot(text_file):
     words_dict = dict()
     for w in sentence_set_list:
         words_dict[w] = sentence_set_list.index(w)
-    hot_words = list()
-    for w in s_concat:
-        hot_word = [0 for _ in range(V)]
-        hot_word[words_dict[w]] = 1
-        hot_words.append(hot_word)
-    print(hot_words)
-
+    text_in_hot_words = list()
+    for sen in sentences:
+        hot_words_sentence = list()
+        for w in sen:
+            hot_word = [0 for _ in range(V)]
+            hot_word[words_dict[w]] = 1
+            hot_words_sentence.append(hot_word)
+        text_in_hot_words.append(hot_words_sentence)
+    print(text_in_hot_words)
 
 
 def learning(text_file):
@@ -51,6 +53,6 @@ def get_similarities(file, words_list):
 
 if __name__ == '__main__':
     get_similarities("text3", ['peace', 'king', 'faithful', 'ship', 'palace'])
-    #print(sentences_to_one_hot('text'))
+    #sentences_to_one_hot('text')
     #print(preprocess_text('text'))
 
